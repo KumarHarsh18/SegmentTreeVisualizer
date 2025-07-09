@@ -1,16 +1,22 @@
-CXX=g++
-CXXFLAGS=-std=c++17 -Iinclude
-LDFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
-SRC=$(wildcard src/*.cpp)
-OBJ=$(SRC:.cpp=.o)
-TARGET=segment_tree
+INCLUDE_DIR = include
+SRC_DIR = src
 
-all: $(TARGET)
+SRCS = $(SRC_DIR)/SegmentTree.cpp $(SRC_DIR)/main.cpp
+OBJS = $(SRCS:.cpp=.o)
 
-$(TARGET): $(OBJ)
-	$(CXX) $(OBJ) -o $@ $(LDFLAGS)
+EXEC = visualizer
+
+all: $(EXEC)
+
+$(EXEC): $(OBJS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
-
+	rm -f $(SRC_DIR)/*.o $(EXEC)
