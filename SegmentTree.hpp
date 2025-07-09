@@ -1,25 +1,18 @@
-// include/SegmentTree.hpp
-#ifndef SEGMENT_TREE_HPP
-#define SEGMENT_TREE_HPP
-
+#pragma once
 #include <vector>
 
 class SegmentTree {
 private:
     std::vector<int> tree;
-    std::vector<int> data;
-    int size;
+    int n;
 
-    void build(int node, int l, int r);
-    int query(int node, int l, int r, int ql, int qr);
+    void build(const std::vector<int>& data, int node, int l, int r);
     void update(int node, int l, int r, int idx, int val);
+    int query(int node, int l, int r, int ql, int qr);
 
 public:
-    SegmentTree(const std::vector<int> &input);
-    int query(int l, int r);
+    SegmentTree(const std::vector<int>& data);
     void update(int idx, int val);
+    int query(int l, int r);
     const std::vector<int>& getTree() const;
 };
-
-#endif
-
