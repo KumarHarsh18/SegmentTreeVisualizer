@@ -9,6 +9,5 @@ A simple and interactive **Segment Tree Visualizer** built using **C++ and SFML*
 - Interactive node highlighting
 - Uses SFML for rendering
 
-## Project Structure
 
 
